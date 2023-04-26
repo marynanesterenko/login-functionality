@@ -20,4 +20,8 @@ public class DriverUtils {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfigReader.getProperty("app.baseurl"));
     }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 }
