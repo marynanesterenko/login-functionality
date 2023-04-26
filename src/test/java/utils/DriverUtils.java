@@ -9,19 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverUtils {
 
-    static WebDriver driver;
+    static WebDriver webDriver;
 
     public static void createDriver(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfigReader.getProperty("app.baseurl"));
+        webDriver = new ChromeDriver(options);
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.get(ConfigReader.getProperty("app.baseurl"));
     }
 
     public static WebDriver getDriver() {
-        return driver;
+        return webDriver;
     }
 }
