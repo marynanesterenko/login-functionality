@@ -1,12 +1,13 @@
-package pages;
-
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LoginPageDiffApproach extends BasePage {
+public class LoginPageDiffApproach extends DriverUtils {
+
+    WebDriver webDriver = DriverUtils.getDriver();
 
     @Test
     public void testEmailAndPasswordFieldsPresence() {

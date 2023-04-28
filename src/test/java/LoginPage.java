@@ -1,23 +1,36 @@
-package pages;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utils.DriverUtils;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginPage extends DriverUtils {
 
     WebDriver webDriver = DriverUtils.getDriver();
+
     WebElement emailInput = webDriver.findElement(By.id("email-input"));
     WebElement passwordInput = webDriver.findElement(By.id("password-input"));
     WebElement loginButton = webDriver.findElement(By.id("login-button"));
-    WebElement successMessage = webDriver.findElement(By.className("message success"));
-    WebElement errorMessage = webDriver.findElement(By.className("message error"));
+    WebElement successMessage = webDriver.findElement(By.xpath("//div[text()='Welcome to Codility']"));
+    WebElement errorMessage = webDriver.findElement(By.xpath("//div[text()='You shall not pass! Arr!']"));
     WebElement emailValidationError = webDriver.findElement(By.xpath("//div[text()='Enter a valid email']"));
     WebElement emptyCredentialsError = webDriver.findElement(By.xpath("//div[text()='Email is required']"));
+
+    @Before
+    public void setUp() {
+        DriverUtils.createDriver();
+    }
+
+    @After
+    public void cleanUp (){
+        DriverUtils.getDriver().quit();
+    }
+
+
     /*
     TC1: verify that the email and password fields are on the main screen of the application:
      */
